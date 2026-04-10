@@ -1,0 +1,68 @@
+
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "./output"],
+      "description": "Read/write generated application files in the output directory"
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "description": "Commit generated code, create repositories and pull requests"
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "${DATABASE_URL}"],
+      "description": "Validate schema migrations and run DB introspection for the DB agent"
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "description": "Browser automation for QA agent to validate generated UI"
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "description": "Deep structured reasoning for the Architect agent's system design phase"
+    }
+  },
+  "tools": {
+    "allowed": [
+      "Read",
+      "Write",
+      "Edit",
+      "MultiEdit",
+      "Bash",
+      "Task",
+      "TodoWrite",
+      "TodoRead",
+      "WebSearch",
+      "WebFetch",
+      "mcp__filesystem__read_file",
+      "mcp__filesystem__write_file",
+      "mcp__filesystem__create_directory",
+      "mcp__filesystem__list_directory",
+      "mcp__github__create_repository",
+      "mcp__github__push_files",
+      "mcp__github__create_pull_request",
+      "mcp__postgres__query",
+      "mcp__puppeteer__screenshot",
+      "mcp__puppeteer__navigate",
+      "mcp__sequential-thinking__sequentialthinking"
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(node:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(cat:*)"
+    ]
+  }
+}
